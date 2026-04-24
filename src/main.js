@@ -2,6 +2,7 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import './style.css'
 import { getInitialMapView } from './mapView.js'
+import { renderPopupContent } from './popupContent.js'
 import { places } from './places.js'
 
 const map = L.map('map')
@@ -10,10 +11,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map)
 
-const latLngs = places.map((place) => {
+places.forEach((place) => {
   const latLng = [place.lat, place.lng]
-  L.marker(latLng).addTo(map).bindPopup(place.name)
-  return latLng
+  L.marker(latLng).addTo(map).bindPopup(renderPopupContent(place))
 })
 
 const initialView = getInitialMapView(places)
