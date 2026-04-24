@@ -5,8 +5,20 @@ function renderImageList(images, title) {
 
   const items = images
     .map(
-      (image, index) =>
-        `<img class="travel-popup__image" src="${image}" alt="${title} 图片 ${index + 1}" />`
+      (image, index) => `
+        <button
+          type="button"
+          class="travel-popup__thumb-button"
+          data-image-index="${index}"
+          aria-label="查看 ${title} 图片 ${index + 1}"
+        >
+          <img
+            class="travel-popup__image"
+            src="${image}"
+            alt="${title} 图片 ${index + 1}"
+          />
+        </button>
+      `
     )
     .join('')
 
