@@ -3,10 +3,12 @@ import 'leaflet/dist/leaflet.css'
 import './style.css'
 import { createLightbox } from './lightbox.js'
 import { getInitialMapView } from './mapView.js'
+import { markerIconOptions } from './markerIconOptions.js'
 import { renderPopupContent } from './popupContent.js'
 import { places } from './places.js'
 import { tileLayerOptions, tileLayerUrlTemplate } from './tileLayerOptions.js'
 
+const markerIcon = L.icon(markerIconOptions)
 const map = L.map('map')
 const lightbox = createLightbox()
 
@@ -14,7 +16,7 @@ L.tileLayer(tileLayerUrlTemplate, tileLayerOptions).addTo(map)
 
 places.forEach((place) => {
   const latLng = [place.lat, place.lng]
-  const marker = L.marker(latLng).addTo(map).bindPopup(renderPopupContent(place))
+  const marker = L.marker(latLng, { icon: markerIcon }).addTo(map).bindPopup(renderPopupContent(place))
 
   marker.on('popupopen', (event) => {
     const popupElement = event.popup.getElement()
