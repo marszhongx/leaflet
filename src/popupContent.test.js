@@ -7,7 +7,7 @@ describe('renderPopupContent', () => {
       name: '北京',
       date: '2025-10-01',
       note: '故宫和景山的秋天很好看。',
-      images: ['/images/beijing-1.svg', '/images/beijing-2.svg']
+      images: ['/images/beijing-1.png', '/images/beijing-2.png']
     })
 
     expect(html).toContain('北京')
@@ -17,8 +17,8 @@ describe('renderPopupContent', () => {
     expect(html).toContain('data-image-index="0"')
     expect(html).toContain('data-image-index="1"')
     expect(html).toContain('travel-popup__thumb-button')
-    expect(html).toContain('src="/images/beijing-1.svg"')
-    expect(html).toContain('src="/images/beijing-2.svg"')
+    expect(html).toContain('src="/images/beijing-1.png"')
+    expect(html).toContain('src="/images/beijing-2.png"')
   })
 
   it('omits the gallery block when images are empty', () => {
@@ -38,7 +38,7 @@ describe('renderPopupContent', () => {
   it('omits optional blocks when date and note are missing', () => {
     const html = renderPopupContent({
       name: '杭州',
-      images: ['/images/hangzhou-1.svg']
+      images: ['/images/hangzhou-1.png']
     })
 
     expect(html).toContain('杭州')

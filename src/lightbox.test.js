@@ -10,7 +10,7 @@ describe('createLightbox', () => {
     const lightbox = createLightbox()
 
     lightbox.open({
-      images: ['/images/beijing-1.svg', '/images/beijing-2.svg'],
+      images: ['/images/beijing-1.png', '/images/beijing-2.png'],
       startIndex: 1,
       title: '北京'
     })
@@ -19,11 +19,11 @@ describe('createLightbox', () => {
 
     expect(lightbox.getState()).toEqual({
       isOpen: true,
-      images: ['/images/beijing-1.svg', '/images/beijing-2.svg'],
+      images: ['/images/beijing-1.png', '/images/beijing-2.png'],
       currentIndex: 1,
       title: '北京'
     })
-    expect(image?.getAttribute('src')).toBe('/images/beijing-2.svg')
+    expect(image?.getAttribute('src')).toBe('/images/beijing-2.png')
     expect(image?.getAttribute('alt')).toBe('北京 图片 2')
   })
 
@@ -31,7 +31,7 @@ describe('createLightbox', () => {
     const lightbox = createLightbox()
 
     lightbox.open({
-      images: ['/images/beijing-1.svg', '/images/beijing-2.svg', '/images/beijing-3.svg'],
+      images: ['/images/beijing-1.png', '/images/beijing-2.png'],
       startIndex: 1,
       title: '北京'
     })
@@ -40,18 +40,17 @@ describe('createLightbox', () => {
     expect(lightbox.getState().currentIndex).toBe(0)
 
     lightbox.showNext()
-    lightbox.showNext()
-    expect(lightbox.getState().currentIndex).toBe(2)
+    expect(lightbox.getState().currentIndex).toBe(1)
 
     const image = document.querySelector('[data-testid="lightbox-image"]')
-    expect(image?.getAttribute('src')).toBe('/images/beijing-3.svg')
+    expect(image?.getAttribute('src')).toBe('/images/beijing-2.png')
   })
 
   it('hides navigation buttons for a single-image place', () => {
     const lightbox = createLightbox()
 
     lightbox.open({
-      images: ['/images/hangzhou-1.svg'],
+      images: ['/images/hangzhou-1.png'],
       startIndex: 0,
       title: '杭州'
     })
@@ -70,7 +69,7 @@ describe('createLightbox', () => {
     const lightbox = createLightbox()
 
     lightbox.open({
-      images: ['/images/shanghai-1.svg', '/images/shanghai-2.svg'],
+      images: ['/images/shanghai-1.png', '/images/shanghai-2.png'],
       startIndex: 0,
       title: '上海'
     })
@@ -93,7 +92,7 @@ describe('createLightbox', () => {
     const lightbox = createLightbox()
 
     lightbox.open({
-      images: ['/images/beijing-1.svg', '/images/beijing-2.svg'],
+      images: ['/images/beijing-1.png', '/images/beijing-2.png'],
       startIndex: 9,
       title: '北京'
     })

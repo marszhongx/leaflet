@@ -5,13 +5,12 @@ import { createLightbox } from './lightbox.js'
 import { getInitialMapView } from './mapView.js'
 import { renderPopupContent } from './popupContent.js'
 import { places } from './places.js'
+import { tileLayerOptions, tileLayerUrlTemplate } from './tileLayerOptions.js'
 
 const map = L.map('map')
 const lightbox = createLightbox()
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map)
+L.tileLayer(tileLayerUrlTemplate, tileLayerOptions).addTo(map)
 
 places.forEach((place) => {
   const latLng = [place.lat, place.lng]
@@ -55,7 +54,7 @@ places.forEach((place) => {
 const initialView = getInitialMapView(places)
 
 if (initialView.mode === 'fitBounds') {
-  map.fitBounds(initialView.latLngs, { padding: [40, 40] })
+  map.fitBounds(initialView.latLngs, initialView.options)
 } else {
   map.setView(initialView.center, initialView.zoom)
 }

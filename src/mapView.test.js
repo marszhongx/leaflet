@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { getInitialMapView } from './mapView.js'
 
 describe('getInitialMapView', () => {
-  it('returns fitBounds mode for multiple places', () => {
+  it('returns fitBounds mode with tighter padding for multiple places', () => {
     const result = getInitialMapView([
       { name: '北京', lat: 39.9042, lng: 116.4074 },
       { name: '上海', lat: 31.2304, lng: 121.4737 }
@@ -13,7 +13,10 @@ describe('getInitialMapView', () => {
       latLngs: [
         [39.9042, 116.4074],
         [31.2304, 121.4737]
-      ]
+      ],
+      options: {
+        padding: [16, 16]
+      }
     })
   })
 
