@@ -1,5 +1,7 @@
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import { inject } from '@vercel/analytics'
+import { injectSpeedInsights } from '@vercel/speed-insights'
 import './style.css'
 import { createLightbox } from './lightbox.js'
 import { getInitialMapView } from './mapView.js'
@@ -7,6 +9,9 @@ import { markerIconOptions } from './markerIconOptions.js'
 import { renderPopupContent } from './popupContent.js'
 import { places } from './places.js'
 import { tileLayerOptions, tileLayerUrlTemplate } from './tileLayerOptions.js'
+
+inject()
+injectSpeedInsights()
 
 const markerIcon = L.icon(markerIconOptions)
 const map = L.map('map')
