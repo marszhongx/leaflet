@@ -14,28 +14,6 @@ body {
   background: #e8eadf;
 }
 
-.map-skeleton {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 1;
-  visibility: visible;
-  transition:
-    opacity 220ms ease,
-    visibility 220ms ease;
-}
-
-.map-skeleton__svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-body.map-ready .map-skeleton {
-  opacity: 0;
-  visibility: hidden;
-}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
